@@ -1,0 +1,32 @@
+
+.card{
+    transition: 5ms ease-in-out;
+    font-family: 'Lobster', cursive !important;
+    font-family: 'Lobster', cursive !important;
+}
+.card-price{
+    position: absolute !important;
+
+}
+.card > span{
+    position: absolute !important;
+}
+.Card-layout-icon:hover{
+    color: #32d2d2;
+    cursor: pointer;
+}
+.card >img {
+    min-height: 482px!important;
+}
+.card-img:hover{
+    transform: translate(20px , 10px);
+    transition: 1ms ease-in-out;
+    cursor: pointer;
+}
+.images{
+    min-height: 482px !important ;
+}
+.card-price{
+    font-weight: 100;
+ padding: 20px;
+}

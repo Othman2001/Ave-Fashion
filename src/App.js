@@ -1,25 +1,44 @@
-import logo from './logo.svg';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 import './App.css';
+import HomePage from "./components/pages/HomePage"
+import ProductPage from "./components/pages/productspage/ProductPage";
+import Men from "./components/pages/men/Men";
+import Cart from "./components/pages/Cart/CartPage";
+import { Suspense, lazy } from 'react';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      //routes setpu
+      <Router>
+          <div className="App">
+              <Switch>
+                  <Route path="/product/:id">
+                   <ProductPage/>
+                  </Route>
+                  <Route path="/men">
+                      <Men/>
+                  </Route>
+                  <Route path="/cart">
+                      <Cart/>
+                  </Route>
+                  <Route path="/">
+                      <HomePage/>
+                  </Route>
+              </Switch>
+          </div>
+      </Router>
+
+
   );
 }
 
 export default App;
+
+
