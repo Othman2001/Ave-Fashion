@@ -24,19 +24,24 @@ const HomePage = ({products,fetchProducts,loading})=> {
             <Header/>
           
             <div  >
-
-<Row>
+                <div className="container pt-5 pb-5">
+                <Row>
             {   loading?(<Loading />):
 
                 products.map((product)=>{
                    return(
 
-                           <Col lg = {3}  className = {product.size?'top' : 'bottom'} key = {product.id}   >
-                       <Cards id = {product.id }  image =  {product.image} price = {product.price} size = {product.size} className = "card-product" />
-                           </Col>
+                       <div className="col-md-10">
+  <Cards id = {product.id }  image =  {product.image} price = {product.price} size = {product.size} className = "card-product" title = {product.title} desc = {product.description}  />
+                       </div>
+                     
+                     
                    )
                 })
             } </Row>
+                </div>
+
+
             </div>
               <Footer/>
         </div>

@@ -43,7 +43,7 @@ const ProductPage = ({products})=>{
                 Items.map((item)=>{
                     return(
                        <GRID className = "mt-5 ml-5"  key = {item.id}>
-                                 <img  src={item.image} className="img-fluid"/>
+                                 <img  src={item.image} className="produuct_image" alt=""/>
                                <ProductList name = {item.name}  id = {item.id}  price = {item.price}  
                                avalibillity = {item.avalibillity}description = {item.description} image = {item.image} />
                        </GRID>

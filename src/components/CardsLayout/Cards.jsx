@@ -1,45 +1,45 @@
-import { Card } from "react-bootstrap"
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import AllOutIcon from '@material-ui/icons/AllOut';
+
 import { connect} from "react-redux"
 import "./cards.css"
 import { addToCart} from "../../state/actions/action"
 import {  Link} from "react-router-dom"
+import { useAlert } from 'react-alert'
 import React from "react";
 
 
-const Cards = ({ image, price, id, size,addToBasket }) => {
+const Cards = ({ image, price, id,addToBasket , title , desc}) => {
+  const alert = useAlert();
+  const hanldeCart  = (product)=>{
+    alert.show(`your ${product.title} added to cart`);
+     addToBasket(product)
+  }
     return(
-        <div className="card">
-            {/*    card*/}
-             <Card >
-                 {/*link to the produc detailes page */}
-                 <Link to={`/product/${id}`}>
-        {/*      card image       */}
-        <Card.Img src = {image}className= "product_image" />
-                 </Link>
+    <div class="row p-2 bg-white border rounded">
+    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src={image} /></div>
+    <div class="col-md-6 mt-1">
+        <h5>{title}</h5>
 
-        <span className="card-price"> {price} $ </span>
-        <Card.Title className="text-sm-center" >
+        <p class="text-justify text-truncate para mb-0">
+          
+            {desc}
+    </p>
+    </div>
+    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+        <div class="d-flex flex-row align-items-center">
+            <h4 class="mr-1">{price}</h4>
+        </div>
+        <h6 class="text-success">Free shipping</h6>
+        <div class="d-flex flex-column mt-4">
+          <div>
+          <button class="btn btn-primary btn-sm" type="button" onClick = {()=> hanldeCart({id , image , price , qty:1,title}) }>Add To Cart</button>
 
-        OutFit orginal from our Fav Store only for
-           {price}  </Card.Title>
-     <Card.Text> <p className="text-black-50 text-center text-lg-center" >  Some Casual OutFit with 100% cotton </p> </Card.Text>
-                                     {/*  start footer class*/}
-                                     <footer className="blockquote-footer text-center text-black-50 " >
-                                    <button  className="button-cart" onClick = {()=> addToBasket({id , image , price ,size,qty:1})}>
-                                  <AddShoppingCartIcon className="Card-layout-icon"      />
-
-                                   </button>
-
-                                     <FavoriteIcon className="Card-layout-icon" />
-                                     <AllOutIcon  className="Card-layout-icon"/>
-                                     </footer>
-                                   {/*    end footer*/}
-                                    </Card>
-                                  {/*  end container fluid  */}
-                                  </div>
+          </div>
+          <Link to = {`/product/${id}`} >  
+        <button class="btn btn-outline-primary btn-sm mt-2" type="button">show me more</button>
+</Link>
+          </div> 
+    </div>
+</div>
     )
 }
 
