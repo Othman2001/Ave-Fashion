@@ -17,7 +17,7 @@ const Cards = ({ image, price, id, size,addToBasket }) => {
                  {/*link to the produc detailes page */}
                  <Link to={`/product/${id}`}>
         {/*      card image       */}
-        <Card.Img src = {image}className="img-fluid  images" />
+        <Card.Img src = {image}className= "product_image" />
                  </Link>
 
         <span className="card-price"> {price} $ </span>
@@ -28,7 +28,7 @@ const Cards = ({ image, price, id, size,addToBasket }) => {
      <Card.Text> <p className="text-black-50 text-center text-lg-center" >  Some Casual OutFit with 100% cotton </p> </Card.Text>
                                      {/*  start footer class*/}
                                      <footer className="blockquote-footer text-center text-black-50 " >
-                                    <button  onClick = {()=> addToBasket({id , image , price ,size,qty:1})}>
+                                    <button  className="button-cart" onClick = {()=> addToBasket({id , image , price ,size,qty:1})}>
                                   <AddShoppingCartIcon className="Card-layout-icon"      />
 
                                    </button>

@@ -1,9 +1,10 @@
+import React from 'react';
 import {Nav, FormControl, Form, Navbar,  NavLink} from 'react-bootstrap'
 import "./nav-bar.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from "react-router-dom";
 
-const ParentNavBar = (props) => {
+const ParentNavBar = () => {
   return (
   <div>
       <Navbar expand="lg">

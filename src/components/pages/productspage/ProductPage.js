@@ -1,11 +1,8 @@
 import {   useParams} from "react-router-dom"
 import { connect} from "react-redux"
 import React, {useState }  from "react"
-import UseFetch from "./UseFetch";
 import ParentNavBar from "../../ParentNavBar/ParentNavBar";
 import styled from "styled-components"
-import headerImAGE from  '../../../photo.png'
-import {Container , Row , Col ,CardGroup ,Card , CardImg ,  CardColumns} from "react-bootstrap"
 import ProductList from "./ProductList";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
@@ -27,7 +24,6 @@ margin-right: 20px !important;
   }
 
 `
-
 //product page takes prodycts and set state(coming from redux store)
 //fetching id co,ing from parms
 const ProductPage = ({products})=>{
@@ -35,7 +31,7 @@ const ProductPage = ({products})=>{
     //state
     const[product , setProducts] = useState(products)
     //filterproduct
-    let Items =product.filter(pro=>pro.id == id );
+    let Items =product.filter(pro=>pro.id ==id );
     console.log(Items, "idea")
 
     return(
@@ -47,9 +43,9 @@ const ProductPage = ({products})=>{
                 Items.map((item)=>{
                     return(
                        <GRID className = "mt-5 ml-5"  key = {item.id}>
-                                 <img  src={item.image} className="img"/>
+                                 <img  src={item.image} className="img-fluid"/>
                                <ProductList name = {item.name}  id = {item.id}  price = {item.price}  
-                               avalibillity = {item.avalibillity}description = {item.Desc} image = {item.image} />
+                               avalibillity = {item.avalibillity}description = {item.description} image = {item.image} />
                        </GRID>
                     )
                 })
@@ -61,7 +57,7 @@ const ProductPage = ({products})=>{
 
 const mapStateToProps = state=>{
     return{
-        products: state.cart.products,
+        products: state.product.products,
         cart: state.cart.cart
     }
 }

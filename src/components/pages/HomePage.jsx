@@ -1,36 +1,38 @@
-import * as React from "react";
+import  React,{useEffect} from "react";
 import ParentNavBar  from "../ParentNavBar/ParentNavBar"
 import Cards from "../CardsLayout/Cards"
 import Header from "../Header/Header";
 import { connect} from "react-redux"
-import { useDispatch, useSelector } from "react-redux";
-import { RenderProducts,Renderdata} from "./HomePageHook"
-import {useState } from "react"
 import Footer from "../Footer/Footer"
-import {Container , Row , Col ,CardGroup ,Card , CardImg ,  CardColumns} from "react-bootstrap"
+import { Row , Col} from "react-bootstrap"
+import {fetchProducts} from '../../state/actions/productsAction';
+import Loading from "../loading/Loading";
 
 
+const HomePage = ({products,fetchProducts,loading})=> {
 
-const HomePage = ({products})=> {
-const [state , setState] = useState(products)
-    console.log(state);
+
+    useEffect(()=>{
+        fetchProducts()
+    },[])
 
     return(
+
         <div>
+            
             <ParentNavBar option = {["men " , "LOCAL STORES" , "LOOK BOOK"]}   />
             <Header/>
-            <div>
-
-            </div>
+          
             <div  >
 
 <Row>
-            {
-                state.map((product)=>{
+            {   loading?(<Loading />):
+
+                products.map((product)=>{
                    return(
 
-                           <Col lg = {product.size? 6 : 3}  className = {product.size?'top' : 'bottom'} key = {product.id}   >
-                       <Cards id = {product.id }  image =  {product.image} price = {product.price} size = {product.size} />
+                           <Col lg = {3}  className = {product.size?'top' : 'bottom'} key = {product.id}   >
+                       <Cards id = {product.id }  image =  {product.image} price = {product.price} size = {product.size} className = "card-product" />
                            </Col>
                    )
                 })
@@ -42,11 +44,16 @@ const [state , setState] = useState(products)
 }
 const mapStateToProps = state=>{
     return{
-        products: state.cart.products,
-        cart: state.cart.cart
+        products: state.product.products,
+        loading:state.product.loading
+    }
+}
+const mapDispatchToProps = dispatch =>{
+    return {
+        fetchProducts:()=> dispatch(fetchProducts())
     }
 }
 
 
-export  default  connect(mapStateToProps )(HomePage)
+export  default  connect(mapStateToProps,mapDispatchToProps )(HomePage)
 // export default HomePage

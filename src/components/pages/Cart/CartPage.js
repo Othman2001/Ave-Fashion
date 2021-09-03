@@ -1,3 +1,4 @@
+import React  from "react";
 import {Row ,Col ,Container,Card , Button} from "react-bootstrap"
 import Header from "../../Header/Header";
 import ParentNavBar from "../../ParentNavBar/ParentNavBar";
@@ -6,8 +7,7 @@ import {connect} from 'react-redux'
 import { useState} from 'react'
 import { removeItem , addQuantity} from '../../../state/actions/action'
 
- const Cart = ({products , cart , total,Remove , add})=>{
-const [cartData,setCart] = useState(cart)
+ const Cart = ({  cart , total,Remove , add})=>{
     return(
 
     <div>
@@ -18,8 +18,8 @@ const [cartData,setCart] = useState(cart)
      <Row>
          <Col lg={6}>
 
-                  {cart.length?(
-       cartData.map((carts)=>{
+                  {cart?(
+       cart.map((carts)=>{
         return(
          <Card className="carts-image" >
           <Card.Img src={carts.image}  />
@@ -30,10 +30,10 @@ const [cartData,setCart] = useState(cart)
                   the card's content.
                   <p> qty: {carts.qty} </p>
                   <p>Price: {carts.price} </p>
-                  <Button onClick = {()=>Remove(carts.id) } >
+                  <Button className = " custom-button white"  onClick = {()=>Remove(carts.id) } >
                    Remove Item
                   </Button>
-                  <Button  className = "ml-5"  onClick = {()=>add(carts.id)}>
+                  <Button  className = " custom-button white"  onClick = {()=>add(carts.id)}>
                       Add More
                   </Button>
               </Card.Text>
