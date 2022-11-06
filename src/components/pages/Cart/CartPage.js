@@ -4,9 +4,13 @@ import Header from "../../Header/Header";
 import ParentNavBar from "../../ParentNavBar/ParentNavBar";
 import Footer from "../../Footer/Footer";
 import { connect } from "react-redux";
-import { removeItem, addQuantity } from "../../../state/actions/action";
+import {
+  removeItem,
+  addQuantity,
+  clearCart,
+} from "../../../state/actions/action";
 
-const Cart = ({ cart, total, Remove, add }) => {
+const Cart = ({ cart, total, Remove, add, clear }) => {
   return (
     <div>
       <ParentNavBar />
@@ -65,8 +69,14 @@ const Cart = ({ cart, total, Remove, add }) => {
               </Row>
               <Row></Row>
               <Row>
-                <Button className="custom-button">Proceed To CheckOut</Button>
-                <Button className="custom-button">ClearCart</Button>
+                <Button
+                  className="custom-button"
+                  onClick={() => {
+                    clear();
+                  }}
+                >
+                  ClearCartss
+                </Button>
               </Row>
             </div>
           </Col>
@@ -90,6 +100,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     add: (id) => {
       dispatch(addQuantity(id));
+    },
+    clear: () => {
+      dispatch(clearCart());
     },
   };
 };
