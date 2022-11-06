@@ -1,16 +1,16 @@
-nav{
-    font-family: 'Lobster', cursive !important;
+nav {
+  font-family: "Work Sans", sans-serif;
 }
-.navbar-item:hover{
+.navbar-item:hover {
   color: #32d2d2 !important;
 }
-.nav-link{
-
+.nav-link {
 }
-.navbar-nav > li{
-  padding-left:30px !important;
-  padding-right:30px !important;
-}.navbar-nav > li{
-   margin-left:30px !important;
-   margin-right:30px !important;
- }
+.navbar-nav > li {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+.navbar-nav > li {
+  margin-left: 30px !important;
+  margin-right: 30px !important;
+}
